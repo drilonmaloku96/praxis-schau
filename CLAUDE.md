@@ -1,66 +1,116 @@
-# Praxis Website - Development Notes
+# Praxis Schau - Kieferorthopädie Website
 
 ## Project Overview
-German dental practice website with multiple pages for different services.
+German orthodontic/dental practice website (Praxis Schau). Static HTML/CSS/JS site with no build tools or frameworks. Hosted on Netlify with custom domain.
 
-## Current Status
-Website is functional with:
-- ✅ Home page with dog placeholder images
-- ✅ Separate pages for Kieferorthopädie, CMD, OSAS, and Zusätzliche Leistungen
-- ✅ Contact page with form
-- ✅ Responsive navigation with color-coded menu items
-- ✅ Medium saturation accent colors
+## Deployment & Hosting
+- **GitHub**: https://github.com/drilonmaloku96/praxis-schau.git (private repo)
+- **Hosting**: Netlify (free tier, auto-deploys from GitHub main branch)
+- **Domain**: praxis-schau.de (registered on Namecheap)
+- **DNS**: Namecheap nameservers pointed to Netlify DNS (dns1-4.p06.nsone.net)
+- **SSL**: Let's Encrypt via Netlify (automatic)
+- **Contact Form**: Netlify Forms (data-netlify="true"), 100 free submissions/month
 
-## Contact Form Implementation (IN PROGRESS - NOT FINISHED)
+## File Structure
+```
+websiteproj/
+├── index.html                          # Home page
+├── netlify.toml                        # Netlify config (publish = ".")
+├── .gitignore                          # Excludes PHP files, OS files, logs
+├── CLAUDE.md                           # This file
+├── css/
+│   └── style.css                       # All styles + mobile breakpoints
+├── js/
+│   └── script.js                       # Nav highlight, counters, hamburger menu, form handling
+├── pages/
+│   ├── kieferorthopadie.html           # KFO services (turquoise accent)
+│   ├── cmd.html                        # CMD treatment (red accent)
+│   ├── osas.html                       # Sleep apnea/OSAS (yellow accent)
+│   ├── zusaetzliche-leistungen.html    # Additional services (green accent)
+│   ├── kontakt.html                    # Contact page with Netlify form
+│   ├── danke.html                      # Thank-you page after form submission
+│   └── team.html                       # Team member cards
+└── images/                             # Image assets (if any)
+```
 
-### What's Been Done:
-- ✅ Created `contact.php` file for form processing
-- ✅ Updated JavaScript to handle PHP form submission (`handlePHPFormSubmit`)
-- ✅ Modified contact form to use new handler
+## Page Accent Colors
+Each service page has its own accent color used for links, buttons, and gradients:
+- **Kieferorthopädie**: Turquoise `#4a9ca8`
+- **CMD**: Red `#b85450`
+- **OSAS**: Yellow `#c4a434`
+- **Zusätzliche Leistungen**: Green `#4a9c5a`
+- **General/Navigation**: Blue `#4a6fa5`
 
-### What's Still Missing:
-1. **Email Address Configuration**: 
-   - Change line 15 in `contact.php`: `$to = "your-actual-email@gmail.com";`
-   - Replace with actual practice email address
+## Design System & Card Style
+All service pages follow a unified card-based layout (template: zusaetzliche-leistungen.html):
 
-2. **Web Server Requirements**:
-   - Upload `contact.php` to web server root directory
-   - Verify PHP and mail() function are available on hosting
-   - Test with `test-php.php` file (already created)
+### Cards
+- White background
+- `border-radius: 15px`
+- `padding: 2.5rem`
+- `box-shadow: 0 5px 20px rgba(0,0,0,0.08)`
+- **NO colored border-top or border-left** (removed intentionally — user wants clean, modern look)
 
-3. **Testing & Validation**:
-   - Test form submission on live server
-   - Verify emails are received correctly
-   - Check spam folder if emails don't arrive
-   - Test form validation and error handling
+### Schnellnavigation Box
+- White background, same shadow as cards
+- Centered list with accent-colored anchor links
+- No colored left border
 
-4. **Optional Improvements**:
-   - Add CAPTCHA for spam protection
-   - Create custom thank-you page
-   - Add auto-response to users
-   - Email template styling
+### Mid-Page Contact Cards
+- Gradient background using the page's accent color
+- Contains 3 mini white cards: Telefon, E-Mail, Sprechzeiten
+- CTA button linking to contact page
+- Uses inline `grid-template-columns: repeat(3, 1fr)` (collapses to 1fr on mobile via CSS)
 
-### Current Form Features:
-- Form validation (client-side)
-- Error handling with user feedback
-- Loading states during submission
-- Sanitized input data
-- Professional email format with timestamp and IP logging
+### Section IDs
+- Each card section has an ID with `scroll-margin-top: 100px` for smooth anchor navigation from Schnellnavigation
 
-### Files Modified:
-- `contact.php` (NEW - form handler)
-- `pages/kontakt.html` (updated form handler)
-- `js/script.js` (added `handlePHPFormSubmit` function)
-- `test-php.php` (NEW - PHP test file)
+## Images & Branding
+- **Logo**: `images/PraxisLogo.png` — blue tooth icon, used in navbar (45px height) and footer (60px, white-inverted)
+- **ALL other images are currently gray placeholders** from placehold.co (Unsplash images were removed for copyright reasons)
+- User plans to add their own photos later
+- When replacing: maintain `border-radius: 15px`, `max-width: 100%`, `height: auto` on mobile
 
-### Next Steps:
-1. Configure email address in contact.php
-2. Upload to web server with PHP support
-3. Test form functionality
-4. Monitor email delivery
+## Contact Information
+- **Email**: kfo-forst@posteo.de
+- **Phone**: 03562 9876002
+- **Address**: QJ3Q+QC Forst (Lausitz)
 
-## Technical Notes
-- Uses PHP mail() function (requires web hosting with mail server)
-- Completely free solution with unlimited submissions
-- No third-party dependencies
-- GDPR-friendly (data not stored externally)
+## Contact Form
+- Uses **Netlify Forms** (NOT PHP — the old contact.php was removed)
+- Form has `data-netlify="true"` and `name="kontakt"` attributes
+- Fields: Name, E-Mail, Telefon, Betreff (dropdown), Nachricht
+- On submit, redirects to `/pages/danke.html`
+- The old `handlePHPFormSubmit` function was removed from script.js
+
+## Mobile Responsiveness
+- Primary breakpoint: `768px`
+- Secondary breakpoint: `1024px`
+- CSS in style.css uses attribute selectors with `!important` to override inline grid styles on mobile:
+  - `[style*="grid-template-columns: repeat(3, 1fr)"]` → `1fr`
+  - `[style*="grid-template-columns"]` → `1fr`
+  - Images: `max-width: 100% !important; height: auto !important`
+  - Service cards get reduced padding on mobile
+  - Lists constrained to `max-width: 100%` with word-wrap
+
+## JavaScript (js/script.js)
+Functions:
+- `initNavigationHighlight()` — highlights active nav item based on current page
+- `initCounters()` / `animateCounter()` — animated number counters on home page
+- `initHamburgerMenu()` — mobile hamburger menu toggle
+- `validateCMDForm()` — CMD self-test form validation
+- `handleFormSubmit()` — general form handler
+- `toggleDropdown()` — navigation dropdown toggle
+
+## Important Notes
+- Inline styles are used extensively in HTML files (established pattern in this project)
+- When adding new cards/sections, follow the existing inline style patterns for consistency
+- The user prefers clean, modern design without colored accent borders on cards
+- All text content is in German
+- GDPR considerations: no external tracking, form data handled by Netlify only
+
+## Pending / TODO
+- [ ] Replace gray placeholder images with actual practice photos
+- [ ] Verify contact form submissions are received in Netlify dashboard
+- [ ] Optional: Add CAPTCHA for spam protection on contact form
+- [ ] Optional: Add Google Maps embed to contact page
