@@ -74,7 +74,7 @@ All service pages follow a unified card-based layout (template: zusaetzliche-lei
 ## Contact Information
 - **Email**: kfo-forst@posteo.de
 - **Phone**: 03562 9876002
-- **Address**: QJ3Q+QC Forst (Lausitz)
+- **Address**: Robert-Koch-Straße 35, 03149 Forst (Lausitz)
 
 ## Contact Form
 - Uses **Netlify Forms** (NOT PHP — the old contact.php was removed)

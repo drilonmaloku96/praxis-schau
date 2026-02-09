@@ -4,7 +4,7 @@
 const CONFIG = {
     // Counter values
     experienceYears: new Date().getFullYear() - 1996,
-    patientsCount: 5000,
+    patientsCount: 20000,
     
     // Geschichte und Philosophie content - Easy to add more entries
     contentBlocks: [
