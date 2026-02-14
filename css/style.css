@@ -375,7 +375,7 @@ main {
     .hamburger {
         display: flex;
     }
-    
+
     .nav-menu {
         position: fixed;
         left: -100%;
@@ -391,6 +391,7 @@ main {
         overflow-y: auto;
         padding: 20px 0;
     }
+}
     
     .nav-menu.active {
         left: 0;
@@ -424,25 +425,33 @@ main {
     }
 
     .nav-container {
-        height: 70px;
+        height: 60px;
         padding: 0 15px;
         position: relative;
     }
 
     .nav-logo {
         flex-shrink: 0;
+        max-width: 120px;
     }
 
     .nav-logo img {
-        height: 40px;
-        max-width: 150px;
+        height: 35px;
+        max-width: 100%;
         width: auto;
+        object-fit: contain;
     }
 
     /* Ensure main content has enough top spacing */
     main {
-        margin-top: 70px !important;
+        margin-top: 60px !important;
         padding-top: 0;
+    }
+
+    /* Adjust mobile menu position for smaller navbar */
+    .nav-menu {
+        top: 60px;
+        max-height: calc(100vh - 60px);
     }
 
     .hero .container {
