@@ -425,18 +425,19 @@ main {
     }
 
     .nav-container {
-        height: 60px;
-        padding: 0 15px;
+        height: 55px;
+        padding: 0 10px;
         position: relative;
     }
 
     .nav-logo {
         flex-shrink: 0;
-        max-width: 120px;
+        max-width: 90px;
+        overflow: hidden;
     }
 
     .nav-logo img {
-        height: 35px;
+        height: 28px;
         max-width: 100%;
         width: auto;
         object-fit: contain;
@@ -444,14 +445,14 @@ main {
 
     /* Ensure main content has enough top spacing */
     main {
-        margin-top: 60px !important;
+        margin-top: 55px !important;
         padding-top: 0;
     }
 
     /* Adjust mobile menu position for smaller navbar */
     .nav-menu {
-        top: 60px;
-        max-height: calc(100vh - 60px);
+        top: 55px;
+        max-height: calc(100vh - 55px);
     }
 
     .hero .container {
