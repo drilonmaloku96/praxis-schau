@@ -1247,6 +1247,53 @@ input[type="range"]::-moz-range-thumb {
     font-size: 0.95rem;
 }
 
+/* Zahnärzte cards with tinted background */
+.team-member.zahnarzt {
+    background: linear-gradient(135deg, #f0f7ff 0%, #e8f2fc 100%);
+}
+
+/* Collapsible team member details */
+.team-member-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0 30px;
+}
+
+.team-member-details.active {
+    max-height: 500px;
+    padding: 0 30px 15px 30px;
+}
+
+.team-member-toggle {
+    background: none;
+    border: none;
+    color: var(--desaturated-blue);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 5px 0;
+    margin-top: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s ease;
+}
+
+.team-member-toggle:hover {
+    color: var(--desaturated-turquoise);
+}
+
+.team-member-toggle::after {
+    content: "▼";
+    font-size: 0.7em;
+    transition: transform 0.3s ease;
+}
+
+.team-member-toggle.active::after {
+    transform: rotate(-180deg);
+}
+
 @media (max-width: 768px) {
     .team-grid {
         gap: 30px;
@@ -1255,5 +1302,9 @@ input[type="range"]::-moz-range-thumb {
     .team-member {
         width: 100%;
         max-width: 350px;
+    }
+
+    .team-member-details.active {
+        max-height: 600px;
     }
 }

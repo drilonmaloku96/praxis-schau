@@ -265,7 +265,15 @@ function initHamburgerMenu() {
     }
 }
 
+// Team member details toggle
+function toggleTeamDetails(button) {
+    const details = button.previousElementSibling;
+    details.classList.toggle('active');
+    button.classList.toggle('active');
+}
+
 // Export functions for global use
 window.validateCMDForm = validateCMDForm;
 window.handleFormSubmit = handleFormSubmit;
 window.toggleDropdown = toggleDropdown;
+window.toggleTeamDetails = toggleTeamDetails;
