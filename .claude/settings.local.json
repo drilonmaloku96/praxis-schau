@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git clone https://github.com/drilonmaloku96/praxis-schau \"/Users/drilon/Coding/Praxis-Schau Webseite\")",
+      "Bash(cd \"/Users/drilon/Coding/Praxis-Schau Webseite\" && npx serve . -p 3000)",
+      "Bash(open http://localhost:49580)"
+    ]
+  }
+}
