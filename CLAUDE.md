@@ -1,21 +1,16 @@
 # Praxis Schau - Kieferorthopädie Website
 
 ## Project Overview
-German orthodontic/dental practice website (Praxis Schau). Static HTML/CSS/JS site with no build tools or frameworks. Hosted on Netlify with custom domain.
+German orthodontic/dental practice website (Praxis Schau). Static HTML/CSS/JS site with no build tools or frameworks.
 
 ## Deployment & Hosting
 - **GitHub**: https://github.com/drilonmaloku96/praxis-schau.git (private repo)
-- **Hosting**: Netlify (free tier, auto-deploys from GitHub main branch)
 - **Domain**: praxis-schau.de (registered on Namecheap)
-- **DNS**: Namecheap nameservers pointed to Netlify DNS (dns1-4.p06.nsone.net)
-- **SSL**: Let's Encrypt via Netlify (automatic)
-- **Contact Form**: Netlify Forms (data-netlify="true"), 100 free submissions/month
 
 ## File Structure
 ```
 websiteproj/
 ├── index.html                          # Home page
-├── netlify.toml                        # Netlify config (publish = ".")
 ├── .gitignore                          # Excludes PHP files, OS files, logs, node_modules
 ├── CLAUDE.md                           # This file
 ├── optimize-images.js                  # Image optimization script (uses sharp)
@@ -30,7 +25,7 @@ websiteproj/
 │   ├── cmd.html                        # CMD treatment (red accent)
 │   ├── osas.html                       # Sleep apnea/OSAS (yellow accent)
 │   ├── zusaetzliche-leistungen.html    # Additional services (green accent)
-│   ├── kontakt.html                    # Contact page with Netlify form
+│   ├── kontakt.html                    # Contact page with form
 │   ├── danke.html                      # Thank-you page after form submission
 │   └── team.html                       # Team member cards
 └── images/                             # Optimized image assets
@@ -91,11 +86,8 @@ All service pages follow a unified card-based layout (template: zusaetzliche-lei
 - **Address**: Robert-Koch-Straße 35, 03149 Forst (Lausitz)
 
 ## Contact Form
-- Uses **Netlify Forms** (NOT PHP — the old contact.php was removed)
-- Form has `data-netlify="true"` and `name="kontakt"` attributes
 - Fields: Name, E-Mail, Telefon, Betreff (dropdown), Nachricht
 - On submit, redirects to `/pages/danke.html`
-- The old `handlePHPFormSubmit` function was removed from script.js
 
 ## Mobile Responsiveness
 - Primary breakpoint: `768px`
@@ -147,7 +139,7 @@ Functions:
 - When adding new cards/sections, follow the existing inline style patterns for consistency
 - The user prefers clean, modern design without colored accent borders on cards
 - All text content is in German
-- GDPR considerations: no external tracking, form data handled by Netlify only
+- GDPR considerations: no external tracking
 
 ## Recent Updates
 - ✅ Fixed mobile navbar logo overflow and positioning (Feb 2026)
@@ -158,7 +150,6 @@ Functions:
 - ✅ Added image optimization tooling (optimize-images.js)
 
 ## Pending / TODO
-- [ ] Verify contact form submissions are received in Netlify dashboard
 - [ ] Optional: Add CAPTCHA for spam protection on contact form
 - [ ] Optional: Add team member descriptions in team.html (currently placeholders)
 - [ ] Optional: Monitor Core Web Vitals after optimizations
